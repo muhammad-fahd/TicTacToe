@@ -1,0 +1,12 @@
+D:\Sample Application\Contour\TTT-Third\Src\TicTacToe.Server\Application\bin\Debug\Application.dll
+D:\Sample Application\Contour\TTT-Third\Src\TicTacToe.Server\Application\bin\Debug\Application.pdb
+D:\Sample Application\Contour\TTT-Third\Src\TicTacToe.Server\Application\obj\Debug\TicTakToe.Application.csprojAssemblyReference.cache
+D:\Sample Application\Contour\TTT-Third\Src\TicTacToe.Server\Application\obj\Debug\TicTakToe.Application.csproj.CoreCompileInputs.cache
+D:\Sample Application\Contour\TTT-Third\Src\TicTacToe.Server\Application\obj\Debug\Application.dll
+D:\Sample Application\Contour\TTT-Third\Src\TicTacToe.Server\Application\obj\Debug\Application.pdb
+D:\Sample Application\Contour\TicTacToe-Game\TicTacToe.Server\Application\bin\Debug\Application.dll
+D:\Sample Application\Contour\TicTacToe-Game\TicTacToe.Server\Application\bin\Debug\Application.pdb
+D:\Sample Application\Contour\TicTacToe-Game\TicTacToe.Server\Application\obj\Debug\TicTakToe.Application.csprojAssemblyReference.cache
+D:\Sample Application\Contour\TicTacToe-Game\TicTacToe.Server\Application\obj\Debug\TicTakToe.Application.csproj.CoreCompileInputs.cache
+D:\Sample Application\Contour\TicTacToe-Game\TicTacToe.Server\Application\obj\Debug\Application.dll
+D:\Sample Application\Contour\TicTacToe-Game\TicTacToe.Server\Application\obj\Debug\Application.pdb
