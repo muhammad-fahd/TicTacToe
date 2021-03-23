@@ -1,3 +1,3 @@
 # TicTacToe
 
-This project is developed by fahd
+This TicTacToe game is developed using SignalR and ASP.NET MVC. There are some unit test as well.
