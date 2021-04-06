@@ -52,7 +52,7 @@
         /// <returns>True if there is a winner</returns>
         private bool CheckWinner()
         {
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < _gameBoard; i++)
             {
                 if (
                     ((_field[i * _gameBoard] != -1 && _field[(i * _gameBoard)] == _field[(i * _gameBoard) + 1] && _field[(i * _gameBoard)] == _field[(i * _gameBoard) + 2]) ||

@@ -31,7 +31,7 @@
 
         $("#game").html('<div id="information" /><br/>');
 
-        var divWidth = (80 * boardSize) + 60;
+        var divWidth = (100 * boardSize);
         $("#game").width(divWidth);
 
         for (var i = 0; i < (boardSize * boardSize); i++) {
@@ -97,7 +97,7 @@
         $("#gameInformation").html("");
         $("#game").hide();
         $("#findAnotherGame").hide();
-        game.server.registerClient($('#gamaName').val());
+        game.server.registerClient($('#gamaName').val(), $('#boardSizeDropDown').val());
 
         findGame();
     });
