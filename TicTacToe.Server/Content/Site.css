@@ -50,9 +50,6 @@ span.mark2 {
     background: url('/Content/Image/TicTacToeO.png') center center no-repeat;
 }
 
-div#game {
-    width: 320px;
-}
 
 fieldset {
     margin-top: 100px;

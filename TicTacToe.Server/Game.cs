@@ -79,14 +79,14 @@ namespace TicTacToe.Server
         /// registering a new client will add the client to the current list of clients and save the connection id which will be used to communicate with the client
         /// </summary>
         /// <param name="data">The player name</param>
-        public void RegisterClient(string data)
+        public void RegisterClient(string data, string boardSize)
         {
             lock (_syncRoot)
             {
                 var client = clients.FirstOrDefault(x => x.ConnectionId == Context.ConnectionId);
                 if (client == null)
                 {
-                    client = new Client { ConnectionId = Context.ConnectionId, Name = data };
+                    client = new Client { ConnectionId = Context.ConnectionId, Name = data, BoardSize = Convert.ToInt32(boardSize)};
                     clients.Add(client);
                 }
 
@@ -184,8 +184,8 @@ namespace TicTacToe.Server
             opponent.Opponent = player;
 
             // Notify both players that a game was found
-            Clients.Client(Context.ConnectionId).foundOpponent(opponent.Name, "/Content/Image/TicTacToeX.png");
-            Clients.Client(opponent.ConnectionId).foundOpponent(player.Name, "/Content/Image/TicTacToeO.png");
+            Clients.Client(Context.ConnectionId).foundOpponent(opponent.Name, "/Content/Image/TicTacToeX.png", opponent.BoardSize);
+            Clients.Client(opponent.ConnectionId).foundOpponent(player.Name, "/Content/Image/TicTacToeO.png", player.BoardSize);
 
             // Fair dice roll
             if (random.Next(0, 5000) % 2 == 0)
@@ -207,7 +207,7 @@ namespace TicTacToe.Server
 
             lock (_syncRoot)
             {
-                games.Add(new Application.Model.TicTacToe { Player1 = player, Player2 = opponent });
+                games.Add(new Application.Model.TicTacToe(player.BoardSize) { Player1 = player, Player2 = opponent });
             }
 
             SendStatsUpdate();

@@ -10,12 +10,18 @@
 
         public Client Player2 { get; set; }
 
-        private readonly int[] _field = new int[9];
+        private int _gameBoard { get; set; }
 
-        private int _movesLeft = 9;
+        private readonly int[] _field;
 
-        public TicTacToe()
+        private int _movesLeft;
+
+        public TicTacToe(int gameBoard = 3) //default board size is 3
         {
+            _gameBoard = gameBoard;
+            _field = new int[_gameBoard * _gameBoard];
+            _movesLeft = _gameBoard * _gameBoard;
+
             // Reset game
             for (var i = 0; i < _field.Length; i++)
             {
@@ -49,8 +55,8 @@
             for (int i = 0; i < 3; i++)
             {
                 if (
-                    ((_field[i * 3] != -1 && _field[(i * 3)] == _field[(i * 3) + 1] && _field[(i * 3)] == _field[(i * 3) + 2]) ||
-                     (_field[i] != -1 && _field[i] == _field[i + 3] && _field[i] == _field[i + 6])))
+                    ((_field[i * _gameBoard] != -1 && _field[(i * _gameBoard)] == _field[(i * _gameBoard) + 1] && _field[(i * _gameBoard)] == _field[(i * _gameBoard) + 2]) ||
+                     (_field[i] != -1 && _field[i] == _field[i + _gameBoard] && _field[i] == _field[i + 6])))
                 {
                     IsGameOver = true;
                     return true;

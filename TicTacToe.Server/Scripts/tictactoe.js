@@ -22,7 +22,7 @@
         $("#information").html("<strong>Your turn!</strong>");
         $('#debug').append('<li>Your turn! Make your move</li>');
     };
-    game.client.foundOpponent = function (message, simbolo) {
+    game.client.foundOpponent = function (message, simbolo, boardSize) {
         $("#findAnotherGame").hide();
         $("#waitingForOpponent").hide();
         $("#gameInformation").html("You are playing against: " + message);
@@ -30,7 +30,11 @@
         $('#debug').append('<li>You are playing against ' + message + '</li>');
 
         $("#game").html('<div id="information" /><br/>');
-        for (var i = 0; i < 9; i++) {
+
+        var divWidth = (80 * boardSize) + 60;
+        $("#game").width(divWidth);
+
+        for (var i = 0; i < (boardSize * boardSize); i++) {
 
             $("#game").append("<span id=" + i + " class='box' />");
         }
@@ -80,7 +84,7 @@
         game.server.play(event.target.id);
     });
     $("#registerName").click(function () {
-        game.server.registerClient($('#gamaName').val());
+        game.server.registerClient($('#gamaName').val(), $('#boardSizeDropDown').val());
 
         $("#register").hide();
         $("#findOpponent").show();
