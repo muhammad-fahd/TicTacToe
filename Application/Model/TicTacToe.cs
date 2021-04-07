@@ -61,7 +61,10 @@
                         matchCount++;
                 }
                 if (matchCount == _gameBoard)
+                {
+                    IsGameOver = true;
                     return true;
+                }
             }
 
             for (int i = 0; i < _gameBoard; i++) //for checking columns
@@ -73,7 +76,10 @@
                         matchCount++;
                 }
                 if (matchCount == _gameBoard)
+                {
+                    IsGameOver = true;
                     return true;
+                }
             }
 
             do //for checking 1st diagonal
@@ -88,7 +94,10 @@
                 }
 
                 if (count == _gameBoard)
+                {
+                    IsGameOver = true;
                     return true;
+                }
 
             } while (false);  //don't need to go in second time
 
@@ -104,7 +113,10 @@
                 }
 
                 if (count == _gameBoard)
+                {
+                    IsGameOver = true;
                     return true;
+                }
 
             } while (false); //don't need to go in second time
 
