@@ -23,7 +23,7 @@
             _movesLeft = _gameBoard * _gameBoard;
 
             // Reset game
-            for (var i = 0; i < _field.Length; i++)
+            for (int i = 0; i < _field.Length; i++)
             {
                 _field[i] = -1;
             }
@@ -38,7 +38,9 @@
         public bool Play(int player, int position)
         {
             if (IsGameOver)
+            {
                 return false;
+            }
 
             PlaceMarker(player, position);
 
@@ -58,7 +60,9 @@
                 for (int j = i; j < i + _gameBoard; j++)
                 {
                     if (_field[i] == _field[j] && _field[i] != -1 && _field[j] != -1)
+                    {
                         matchCount++;
+                    }
                 }
                 if (matchCount == _gameBoard)
                 {
@@ -73,7 +77,9 @@
                 for (int j = i; j < _gameBoard * _gameBoard; j += _gameBoard)
                 {
                     if (_field[i] == _field[j] && _field[i] != -1 && _field[j] != -1)
+                    {
                         matchCount++;
+                    }
                 }
                 if (matchCount == _gameBoard)
                 {
@@ -82,43 +88,37 @@
                 }
             }
 
-            do //for checking 1st diagonal
+            //for checking 1st diagonal
+            int count = 0, k = 0;
+            for (int j = k; j < _gameBoard * _gameBoard; j = j + _gameBoard + 1)
             {
-                int count = 0, i = 0;
-                for (int j = i; j < _gameBoard * _gameBoard; j = j + _gameBoard + 1)
+                if (_field[k] == _field[j] && _field[k] != -1 && _field[j] != -1)
                 {
-                    if (_field[i] == _field[j] && _field[i] != -1 && _field[j] != -1)
-                    {
-                        count++;
-                    }
+                    count++;
                 }
+            }
 
-                if (count == _gameBoard)
-                {
-                    IsGameOver = true;
-                    return true;
-                }
-
-            } while (false);  //don't need to go in second time
-
-            do //for checking 2nd diagonal
+            if (count == _gameBoard)
             {
-                int count = 0, i = _gameBoard - 1;
-                for (int j = i; j < _gameBoard * _gameBoard; j += _gameBoard - 1)
-                {
-                    if (_field[i] == _field[j] && _field[i] != -1 && _field[j] != -1)
-                    {
-                        count++;
-                    }
-                }
+                IsGameOver = true;
+                return true;
+            }
 
-                if (count == _gameBoard)
+            //for checking 2nd diagonal
+            count = 0; k = _gameBoard - 1;
+            for (int j = k; j < _gameBoard * _gameBoard; j += _gameBoard - 1)
+            {
+                if (_field[k] == _field[j] && _field[k] != -1 && _field[j] != -1)
                 {
-                    IsGameOver = true;
-                    return true;
+                    count++;
                 }
+            }
 
-            } while (false); //don't need to go in second time
+            if (count == _gameBoard)
+            {
+                IsGameOver = true;
+                return true;
+            }
 
             return false;
         }
@@ -141,9 +141,14 @@
             }
 
             if (position > _field.Length)
+            {
                 return false;
+            }
+
             if (_field[position] != -1)
+            {
                 return false;
+            }
 
             _field[position] = player;
 
