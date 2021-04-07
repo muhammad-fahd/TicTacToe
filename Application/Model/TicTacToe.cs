@@ -52,22 +52,61 @@
         /// <returns>True if there is a winner</returns>
         private bool CheckWinner()
         {
-            for (int i = 0; i < _gameBoard; i++)
+            for (int i = 0; i < _gameBoard * _gameBoard; i += _gameBoard) //for checking rows
             {
-                if (
-                    ((_field[i * _gameBoard] != -1 && _field[(i * _gameBoard)] == _field[(i * _gameBoard) + 1] && _field[(i * _gameBoard)] == _field[(i * _gameBoard) + 2]) ||
-                     (_field[i] != -1 && _field[i] == _field[i + _gameBoard] && _field[i] == _field[i + 6])))
+                int matchCount = 0;
+                for (int j = i; j < i + _gameBoard; j++)
                 {
-                    IsGameOver = true;
-                    return true;
+                    if (_field[i] == _field[j] && _field[i] != -1 && _field[j] != -1)
+                        matchCount++;
                 }
+                if (matchCount == _gameBoard)
+                    return true;
             }
 
-            if ((_field[0] != -1 && _field[0] == _field[4] && _field[0] == _field[8]) || (_field[2] != -1 && _field[2] == _field[4] && _field[2] == _field[6]))
+            for (int i = 0; i < _gameBoard; i++) //for checking columns
             {
-                IsGameOver = true;
-                return true;
+                int matchCount = 0;
+                for (int j = i; j < _gameBoard * _gameBoard; j += _gameBoard)
+                {
+                    if (_field[i] == _field[j] && _field[i] != -1 && _field[j] != -1)
+                        matchCount++;
+                }
+                if (matchCount == _gameBoard)
+                    return true;
             }
+
+            do //for checking 1st diagonal
+            {
+                int count = 0, i = 0;
+                for (int j = i; j < _gameBoard * _gameBoard; j = j + _gameBoard + 1)
+                {
+                    if (_field[i] == _field[j] && _field[i] != -1 && _field[j] != -1)
+                    {
+                        count++;
+                    }
+                }
+
+                if (count == _gameBoard)
+                    return true;
+
+            } while (false);  //don't need to go in second time
+
+            do //for checking 2nd diagonal
+            {
+                int count = 0, i = _gameBoard - 1;
+                for (int j = i; j < _gameBoard * _gameBoard; j += _gameBoard - 1)
+                {
+                    if (_field[i] == _field[j] && _field[i] != -1 && _field[j] != -1)
+                    {
+                        count++;
+                    }
+                }
+
+                if (count == _gameBoard)
+                    return true;
+
+            } while (false); //don't need to go in second time
 
             return false;
         }

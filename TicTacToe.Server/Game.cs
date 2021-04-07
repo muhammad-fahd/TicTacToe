@@ -164,7 +164,7 @@ namespace TicTacToe.Server
             player.LookingForOpponent = true;
 
             // Look for a random opponent if there's more than one looking for a game
-            var opponent = clients.Where(x => x.ConnectionId != Context.ConnectionId && x.LookingForOpponent && !x.IsPlaying).OrderBy(x => Guid.NewGuid()).FirstOrDefault();
+            var opponent = clients.Where(x => x.ConnectionId != Context.ConnectionId && x.LookingForOpponent && !x.IsPlaying && x.BoardSize == player.BoardSize).OrderBy(x => Guid.NewGuid()).FirstOrDefault();
             if (opponent == null)
             {
                 Clients.Client(Context.ConnectionId).noOpponents();
